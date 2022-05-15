@@ -5,10 +5,6 @@ class NasaImageController {
     def nasaImageService
 
     def index() {
-        withFormat {
-            html {
-                [nasaImage: nasaImageService.fetch()]
-            }
-        }
+        [nasaImage: nasaImageService.fetch()]
     }
 }
