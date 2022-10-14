@@ -1,4 +1,6 @@
 import grails.util.Environment
+import org.grails.plugins.excelimport.ExcelImportService
+import wood.mike.nasa.MyExcelImporter
 import wood.mike.nasa.StandardNasaImageFetcher
 import wood.mike.nasa.TestNasaImageFetcher
 
@@ -15,5 +17,9 @@ beans = {
         case Environment.TEST:
             nasaImageService(TestNasaImageFetcher)
         break
+    }
+
+    myExcelImporter(wood.mike.nasa.MyExcelImporter) {               // this is stupid but configuring a non-grails service in src/groovy with a plugin service
+        excelImportService = ref('excelImportService')
     }
 }
